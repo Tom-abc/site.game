@@ -65,9 +65,9 @@ function fclick(){
                     $(".open2").removeClass("show open2");
                     sessionStorage.setItem("tt","xx");
                     sessionStorage.setItem("pp",pp+1);
-                    if(pp==1){ //当匹配成功次数达到8，则匹配完成
+                    if(pp==7){ //当匹配成功次数达到8，则匹配完成
                         setTimeout(function(){
-                            alert("你共用了"+ss+"步");
+                            alert("You took "+ss+" steps.");
                         },500)
                     }
                 },500)
