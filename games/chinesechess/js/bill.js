@@ -1,12 +1,11 @@
-/*! Ò»Ò¶¹ÂÖÛ | qq:28701884 | »¶Ó­Ö¸½Ì */
 
 var bill = bill || {};
 
-//³õÊ¼»¯
+//ï¿½ï¿½Ê¼ï¿½ï¿½
 bill.init = function (){
 	if (com.store){
 		clearInterval(bill.timer);
-		bill.setBillList(com.arr2Clone(com.initMap)); //Ð´ÈëÆåÆ×ÁÐ±í
+		bill.setBillList(com.arr2Clone(com.initMap)); //Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 		play.isPlay=false;	
 		com.show();
 	}else {
@@ -15,12 +14,12 @@ bill.init = function (){
 }
 
 
-//°ÑËùÓÐÆåÆ×Ð´ÈëÆåÆ×ÁÐ±í
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 bill.setBillList = function (map){
 	var list=com.get("billList")
 	for (var i=0; i < com.store.length ; i++){
 		var option = document.createElement('option');
-		 option.text='ÆåÆ×'+(i+1);
+		 option.text='ï¿½ï¿½ï¿½ï¿½'+(i+1);
 		 option.value=i;
 		list.add(option , null);
 	}
@@ -32,7 +31,7 @@ bill.setBillList = function (map){
 }
 
 
-//ÆåÆ×·ÖÎö Ð´Èë
+//ï¿½ï¿½ï¿½×·ï¿½ï¿½ï¿½ Ð´ï¿½ï¿½
 bill.setMove = function (bl,inx,map){
 	var map = com.arr2Clone(map);
 	for (var i=0; i<map.length; i++){
@@ -69,7 +68,7 @@ bill.setMove = function (bl,inx,map){
 	return map;
 }
 
-//Ð´ÈëÆåÆ×
+//Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 bill.setBox = function (bl,initMap){
 	var map = com.arr2Clone(initMap);
 	var bl= bl.split("");

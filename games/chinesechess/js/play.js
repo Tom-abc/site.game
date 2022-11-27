@@ -1,10 +1,9 @@
-/*! һҶ���� | qq:28701884 | ��ӭָ�� */
 
 var play = play||{};
 
 play.init = function (){
 	
-	play.my				=	1;				//��ҷ�?
+	play.my				=	1;				//��ҷ�?
 	play.map 			=	com.arr2Clone (com.initMap);		//��ʼ������
 	play.nowManKey		=	false;			//����Ҫ����������
 	play.pace 			=	[];				//��¼ÿһ��
@@ -14,7 +13,7 @@ play.init = function (){
 	play.show 			= 	com.show;
 	play.showPane 		= 	com.showPane;
 	play.isOffensive	=	true;			//�Ƿ�����
-	play.depth			=	play.depth || 3;				//�������?
+	play.depth			=	play.depth || 3;				//�������?
 	
 	play.isFoul			=	false;	//�Ƿ񷸹泤��
 	
@@ -35,7 +34,7 @@ play.init = function (){
 	}
 	play.show();
 	
-	//�󶨵���¼�?
+	//�󶨵���¼�?
 	com.canvas.addEventListener("click",play.clickCanvas)
 	com.get("bnBox").style="display:none"
 	//clearInterval(play.timer);
@@ -130,7 +129,7 @@ play.regret = function (){
 
 
 
-//��������¼�?
+//��������¼�?
 play.clickCanvas = function (e){
 	if (!play.isPlay) return false;
 	var key = play.getClickMan(e);
@@ -144,7 +143,7 @@ play.clickCanvas = function (e){
 	}else {
 		play.clickPoint(x,y);	
 	}
-	play.isFoul = play.checkFoul();//����ǲ��ǳ���?
+	play.isFoul = play.checkFoul();//����ǲ��ǳ���?
 }
 
 //������ӣ����������ѡ�л��߳���
@@ -180,14 +179,14 @@ play.clickMan = function (key,x,y){
 			man.alpha = 0.6;
 			com.pane.isShow = false;
 			play.nowManKey = key;
-			com.mans[key].ps = com.mans[key].bl(); //����������ŵ�?
+			com.mans[key].ps = com.mans[key].bl(); //����������ŵ�?
 			com.dot.dots = com.mans[key].ps
 			com.show();
 		}
 	}
 }
 
-//����ŵ�?
+//����ŵ�?
 play.clickPoint = function (x,y){
 	var key=play.nowManKey;
 	var man=com.mans[key];
@@ -214,28 +213,9 @@ play.clickPoint = function (x,y){
 }
 
 //Ai�Զ�����
-play.AIPlay = function (){
-	//return
-	play.my = -1 ;
-	var pace=AI.init(play.pace.join(""))
-	if (!pace) {
-		play.showWin (1);
-		return ;
-	}
-	play.pace.push(pace.join(""));
-	var key=play.map[pace[1]][pace[0]]
-		play.nowManKey = key;
-	
-	var key=play.map[pace[3]][pace[2]];
-	if (key){
-		play.AIclickMan(key,pace[2],pace[3]);	
-	}else {
-		play.AIclickPoint(pace[2],pace[3]);	
-	}
-	
-}
 
-//����Ƿ񳤽�?
+
+//����Ƿ񳤽�?
 play.checkFoul = function(){
 	var p=play.pace;
 	var len=parseInt(p.length,10);
@@ -299,7 +279,7 @@ play.getClickPoint = function (e){
 	return {"x":x,"y":y}
 }
 
-//�������?
+//�������?
 play.getClickMan = function (e){
 	var clickXY=play.getClickPoint(e);
 	var x=clickXY.x;
