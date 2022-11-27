@@ -127,6 +127,9 @@ play.regret = function (){
 	com.show();
 }
 play.fff=null;
+function set(fff){
+	play.fff=fff;
+}
 play.AIPlay = function (){
 	//return
 	play.my = -1 ;

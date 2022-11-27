@@ -66,7 +66,7 @@ AI.init = function(pace){
 	}
 }
 
-play.fff=AI.init;
+set(AI.init);
 
 //�������������ŷ�
 AI.iterativeSearch = function (map, my){
