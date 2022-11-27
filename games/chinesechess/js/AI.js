@@ -65,26 +65,8 @@ AI.init = function(pace){
 		return false;	
 	}
 }
-play.AIPlay = function (){
-	//return
-	play.my = -1 ;
-	var pace=AI.init(play.pace.join(""))
-	if (!pace) {
-		play.showWin (1);
-		return ;
-	}
-	play.pace.push(pace.join(""));
-	var key=play.map[pace[1]][pace[0]]
-		play.nowManKey = key;
-	
-	var key=play.map[pace[3]][pace[2]];
-	if (key){
-		play.AIclickMan(key,pace[2],pace[3]);	
-	}else {
-		play.AIclickPoint(pace[2],pace[3]);	
-	}
-	
-}
+
+play.fff=AI.init;
 
 //�������������ŷ�
 AI.iterativeSearch = function (map, my){
