@@ -1,28 +1,28 @@
-/*! Ò»Ò¶¹ÂÖÛ | qq:28701884 | »¶Ó­Ö¸½Ì */
+/*! Ò»Ò¶ï¿½ï¿½ï¿½ï¿½ | qq:28701884 | ï¿½ï¿½Ó­Ö¸ï¿½ï¿½ */
 
 var play = play||{};
 
 play.init = function (){
 	
-	play.my				=	1;				//Íæ¼Ò·½
-	play.map 			=	com.arr2Clone (com.initMap);		//³õÊ¼»¯ÆåÅÌ
-	play.nowManKey		=	false;			//ÏÖÔÚÒª²Ù×÷µÄÆå×Ó
-	play.pace 			=	[];				//¼ÇÂ¼Ã¿Ò»²½
-	play.isPlay 		=	true ;			//ÊÇ·ñÄÜ×ßÆå
+	play.my				=	1;				//ï¿½ï¿½Ò·ï¿?
+	play.map 			=	com.arr2Clone (com.initMap);		//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	play.nowManKey		=	false;			//ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	play.pace 			=	[];				//ï¿½ï¿½Â¼Ã¿Ò»ï¿½ï¿½
+	play.isPlay 		=	true ;			//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	play.mans 			=	com.mans;
 	play.bylaw 			= 	com.bylaw;
 	play.show 			= 	com.show;
 	play.showPane 		= 	com.showPane;
-	play.isOffensive	=	true;			//ÊÇ·ñÏÈÊÖ
-	play.depth			=	play.depth || 3;				//ËÑË÷Éî¶È
+	play.isOffensive	=	true;			//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+	play.depth			=	play.depth || 3;				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 	
-	play.isFoul			=	false;	//ÊÇ·ñ·¸¹æ³¤½«
+	play.isFoul			=	false;	//ï¿½Ç·ñ·¸¹æ³¤ï¿½ï¿½
 	
 	
 	
-	com.pane.isShow		=	 false;			//Òþ²Ø·½¿é
+	com.pane.isShow		=	 false;			//ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
 	
-	//³õÊ¼»¯Æå×Ó
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (var i=0; i<play.map.length; i++){
 		for (var n=0; n<play.map[i].length; n++){
 			var key = play.map[i][n];
@@ -35,8 +35,9 @@ play.init = function (){
 	}
 	play.show();
 	
-	//°ó¶¨µã»÷ÊÂ¼þ
+	//ï¿½ó¶¨µï¿½ï¿½ï¿½Â¼ï¿?
 	com.canvas.addEventListener("click",play.clickCanvas)
+	com.get("bnBox").style="display:none"
 	//clearInterval(play.timer);
 	//com.get("autoPlay").addEventListener("click", function(e) {
 		//clearInterval(play.timer);
@@ -60,9 +61,6 @@ play.init = function (){
 	*/
 	
 	
-	com.get("regretBn").addEventListener("click", function(e) {
-		play.regret();
-	})
 	
 	/*
 	var initTime = new Date().getTime();
@@ -82,10 +80,10 @@ play.init = function (){
 
 
 
-//»ÚÆå
+//ï¿½ï¿½ï¿½ï¿½
 play.regret = function (){
 	var map  = com.arr2Clone(com.initMap);
-	//³õÊ¼»¯ËùÓÐÆå×Ó
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (var i=0; i<map.length; i++){
 		for (var n=0; n<map[i].length; n++){
 			var key = map[i][n];
@@ -132,7 +130,7 @@ play.regret = function (){
 
 
 
-//µã»÷ÆåÅÌÊÂ¼þ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿?
 play.clickCanvas = function (e){
 	if (!play.isPlay) return false;
 	var key = play.getClickMan(e);
@@ -146,15 +144,15 @@ play.clickCanvas = function (e){
 	}else {
 		play.clickPoint(x,y);	
 	}
-	play.isFoul = play.checkFoul();//¼ì²âÊÇ²»ÊÇ³¤½«
+	play.isFoul = play.checkFoul();//ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½Ç³ï¿½ï¿½ï¿?
 }
 
-//µã»÷Æå×Ó£¬Á½ÖÖÇé¿ö£¬Ñ¡ÖÐ»òÕß³Ô×Ó
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð»ï¿½ï¿½ß³ï¿½ï¿½ï¿½
 play.clickMan = function (key,x,y){
 	var man = com.mans[key];
-	//³Ô×Ó
+	//ï¿½ï¿½ï¿½ï¿½
 	if (play.nowManKey&&play.nowManKey != key && man.my != com.mans[play.nowManKey ].my){
-		//manÎª±»³ÔµôµÄÆå×Ó
+		//manÎªï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (play.indexOfPs(com.mans[play.nowManKey].ps,[x,y])){
 			man.isShow = false;
 			var pace=com.mans[play.nowManKey].x+""+com.mans[play.nowManKey].y
@@ -171,28 +169,25 @@ play.clickMan = function (key,x,y){
 			com.pane.isShow = false;
 			com.dot.dots = [];
 			com.show()
-			com.get("clickAudio").play();
 			setTimeout("play.AIPlay()",500);
 			if (key == "j0") play.showWin (-1);
 			if (key == "J0") play.showWin (1);
 		}
-	// Ñ¡ÖÐÆå×Ó
+	// Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}else{
 		if (man.my===1){
 			if (com.mans[play.nowManKey]) com.mans[play.nowManKey].alpha = 1 ;
 			man.alpha = 0.6;
 			com.pane.isShow = false;
 			play.nowManKey = key;
-			com.mans[key].ps = com.mans[key].bl(); //»ñµÃËùÓÐÄÜ×Åµã
+			com.mans[key].ps = com.mans[key].bl(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿?
 			com.dot.dots = com.mans[key].ps
 			com.show();
-			//com.get("selectAudio").start(0);
-			com.get("selectAudio").play();
 		}
 	}
 }
 
-//µã»÷×Åµã
+//ï¿½ï¿½ï¿½ï¿½Åµï¿?
 play.clickPoint = function (x,y){
 	var key=play.nowManKey;
 	var man=com.mans[key];
@@ -210,16 +205,15 @@ play.clickPoint = function (x,y){
 			play.nowManKey = false;
 			com.dot.dots = [];
 			com.show();
-			com.get("clickAudio").play();
 			setTimeout("play.AIPlay()",500);
 		}else{
-			//alert("²»ÄÜÕâÃ´×ßÅ¶£¡")	
+			//alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Å¶ï¿½ï¿½")	
 		}
 	}
 	
 }
 
-//Ai×Ô¶¯×ßÆå
+//Aiï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
 play.AIPlay = function (){
 	//return
 	play.my = -1 ;
@@ -238,12 +232,10 @@ play.AIPlay = function (){
 	}else {
 		play.AIclickPoint(pace[2],pace[3]);	
 	}
-	com.get("clickAudio").play();
-	
 	
 }
 
-//¼ì²éÊÇ·ñ³¤½«
+//ï¿½ï¿½ï¿½ï¿½Ç·ñ³¤½ï¿?
 play.checkFoul = function(){
 	var p=play.pace;
 	var len=parseInt(p.length,10);
@@ -257,7 +249,7 @@ play.checkFoul = function(){
 
 play.AIclickMan = function (key,x,y){
 	var man = com.mans[key];
-	//³Ô×Ó
+	//ï¿½ï¿½ï¿½ï¿½
 	man.isShow = false;
 	delete play.map[com.mans[play.nowManKey].y][com.mans[play.nowManKey].x];
 	play.map[y][x] = play.nowManKey;
@@ -299,7 +291,7 @@ play.indexOfPs = function (ps,xy){
 	
 }
 
-//»ñµÃµã»÷µÄ×Åµã
+//ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½
 play.getClickPoint = function (e){
 	var domXY = com.getDomXY(com.canvas);
 	var x=Math.round((e.pageX-domXY.x-com.pointStartX-20)/com.spaceX)
@@ -307,7 +299,7 @@ play.getClickPoint = function (e){
 	return {"x":x,"y":y}
 }
 
-//»ñµÃÆå×Ó
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 play.getClickMan = function (e){
 	var clickXY=play.getClickPoint(e);
 	var x=clickXY.x;
@@ -319,9 +311,9 @@ play.getClickMan = function (e){
 play.showWin = function (my){
 	play.isPlay = false;
 	if (my===1){
-		alert("¹§Ï²Äã£¬ÄãÓ®ÁË£¡");
+		alert("You won!");
 	}else{
-		alert("ºÜÒÅº¶£¬ÄãÊäÁË£¡");
+		alert("You lost!");
 	}
 }
 
