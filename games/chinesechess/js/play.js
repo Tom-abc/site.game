@@ -126,7 +126,7 @@ play.regret = function (){
 	play.isPlay=true;
 	com.show();
 }
-play.fff=null;
+play.fff=()=>{};
 function set(fff){
 	play.fff=fff;
 }
