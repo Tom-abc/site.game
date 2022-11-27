@@ -1,17 +1,26 @@
-/*! Ò»Ò¶¹ÂÖÛ | qq:28701884 | »¶Ó­Ö¸½Ì */
+/*! Ò»Ò¶ï¿½ï¿½ï¿½ï¿½ | qq:28701884 | ï¿½ï¿½Ó­Ö¸ï¿½ï¿½ */
 
 var AI = AI||{};
 
-AI.historyTable	=	{};		//ÀúÊ·±í
+AI.historyTable	=	{};		//ï¿½ï¿½Ê·ï¿½ï¿½
 
 
-//ÈË¹¤ÖÇÄÜ³õÊ¼»¯
+//ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½Ü³ï¿½Ê¼ï¿½ï¿½
 AI.init = function(pace){
-	var bill = AI.historyBill || com.gambit; //¿ª¾Ö¿â
+	com.getData("js/gambit.all.js",
+		function(data){
+		com.gambit=data.split(" ");
+		AI.historyBill = com.gambit;
+	})
+	com.getData("js/store.js",
+		function(data){
+		com.store=data.split(" ");
+	})
+	var bill = AI.historyBill || com.gambit; //ï¿½ï¿½ï¿½Ö¿ï¿½
 	if (bill.length){
 		var len=pace.length;
 		var arr=[];
-		//ÏÈËÑË÷ÆåÆ×
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (var i=0;i< bill.length;i++){
 			if (bill[i].slice(0,len)==pace) {
 			arr.push(bill[i]);
@@ -26,7 +35,7 @@ AI.init = function(pace){
 		}
 		
 	}
-	 //Èç¹ûÆåÆ×ÀïÃæÃ»ÓÐ£¬ÈË¹¤ÖÇÄÜ¿ªÊ¼ÔË×÷
+	 //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð£ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½Ü¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
 	var initTime = new Date().getTime();
 	AI.treeDepth=play.depth;
 	//AI.treeDepth=4;
@@ -44,20 +53,20 @@ AI.init = function(pace){
 	if (val&&val.value!=-8888) {
 		var man = play.mans[val.key];
 		var nowTime= new Date().getTime();
-		/*com.get("moveInfo").innerHTML='<h3>AIËÑË÷½á¹û£º</h3>×î¼Ñ×Å·¨£º'+
+		/*com.get("moveInfo").innerHTML='<h3>AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</h3>ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½'+
 										com.createMove(com.arr2Clone(play.map),man.x,man.y,val.x,val.y)+
-										'<br />ËÑË÷Éî¶È£º'+AI.treeDepth+'<br />ËÑË÷·ÖÖ§£º'+
-										AI.number+'¸ö <br />×î¼Ñ×Å·¨ÆÀ¹À£º'+
-										val.value+'·Ö'+
-										' <br />ËÑË÷ÓÃÊ±£º'+
-										(nowTime-initTime)+'ºÁÃë'*/
+										'<br />ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½'+AI.treeDepth+'<br />ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½'+
+										AI.number+'ï¿½ï¿½ <br />ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'+
+										val.value+'ï¿½ï¿½'+
+										' <br />ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½'+
+										(nowTime-initTime)+'ï¿½ï¿½ï¿½ï¿½'*/
 		return [man.x,man.y,val.x,val.y]
 	}else {
 		return false;	
 	}
 }
 
-//µü´ú¼ÓÉîËÑË÷×Å·¨
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½
 AI.iterativeSearch = function (map, my){
 	var timeOut=100;
 	var initDepth = 1;
@@ -77,7 +86,7 @@ AI.iterativeSearch = function (map, my){
 	return false;
 }
 
-//È¡µÃÆåÅÌÉÏËùÓÐÆå×Ó
+//È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 AI.getMapAllMan = function (map, my){
 	var mans=[];
 	for (var i=0; i<map.length; i++){
@@ -94,9 +103,9 @@ AI.getMapAllMan = function (map, my){
 }
 
 /*
-//È¡µÃÆåÆ×ËùÓÐ¼º·½Æå×ÓµÄ×Å·¨
+//È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Å·ï¿½
 AI.getMoves = function (map, my, txtMap){
-	var highMores = [];   //ÓÅÏÈ¼¶¸ßµÄ×Å·¨
+	var highMores = [];   //ï¿½ï¿½ï¿½È¼ï¿½ï¿½ßµï¿½ï¿½Å·ï¿½
 	var manArr = AI.getMapAllMan (map, my);
 	var moves = [];
 	var history=AI.historyTable[txtMap];
@@ -114,7 +123,7 @@ AI.getMoves = function (map, my, txtMap){
 	return highMores.concat(moves);
 }
 */
-//È¡µÃÆåÆ×ËùÓÐ¼º·½Æå×ÓµÄ×Å·¨
+//È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Å·ï¿½
 AI.getMoves = function (map, my){
 	var manArr = AI.getMapAllMan (map, my);
 	var moves = [];
@@ -128,7 +137,7 @@ AI.getMoves = function (map, my){
 			var y=man.y;
 			var newX=val[n][0];
 			var newY=val[n][1];
-			 //Èç¹û²»ÊÇ³¤½«×Å·¨
+			 //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½Å·ï¿½
 			if (foul[0]!=x || foul[1]!=y || foul[2]!=newX || foul[3]!=newY ){
 				moves.push([x,y,newX,newY,man.key])
 			}
@@ -136,7 +145,7 @@ AI.getMoves = function (map, my){
 	}
 	return moves;
 }
-//A:µ±Ç°ÆåÊÖvalue/B:¶ÔÊÖvalue/depth£º²ã¼¶
+//A:ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½value/B:ï¿½ï¿½ï¿½ï¿½value/depthï¿½ï¿½ï¿½ã¼¶
 AI.getAlphaBeta = function (A, B, depth, map ,my) { 
 	//var txtMap= map.join();
 	//var history=AI.historyTable[txtMap];
@@ -144,15 +153,15 @@ AI.getAlphaBeta = function (A, B, depth, map ,my) {
 	//		return 	history.value*my;
 	//}
 	if (depth == 0) {
-		return {"value":AI.evaluate(map , my)}; //¾ÖÃæÆÀ¼Ûº¯Êý; 
-¡¡	}
-¡¡	var moves = AI.getMoves(map , my ); //Éú³ÉÈ«²¿×ß·¨; 
-¡¡	//ÕâÀïÅÅÐòÒÔºó»áÔö¼ÓÐ§ÂÊ
+		return {"value":AI.evaluate(map , my)}; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½; 
+ï¿½ï¿½	}
+ï¿½ï¿½	var moves = AI.getMoves(map , my ); //ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ß·ï¿½; 
+ï¿½ï¿½	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 
 	for (var i=0; i < moves.length; i++) {
 		
 		
-¡¡¡¡	//×ßÕâ¸ö×ß·¨;
+ï¿½ï¿½ï¿½ï¿½	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½;
 		var move= moves[i];
 		var key = move[4];
 		var oldX= move[0];
@@ -166,7 +175,7 @@ AI.getAlphaBeta = function (A, B, depth, map ,my) {
 		play.mans[key].x = newX;
 		play.mans[key].y = newY;
 		
-	¡¡¡¡if (clearKey=="j0"||clearKey=="J0") {//±»³ÔÀÏ½«,³·ÏûÕâ¸ö×ß·¨; 
+	ï¿½ï¿½ï¿½ï¿½if (clearKey=="j0"||clearKey=="J0") {//ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½; 
 			play.mans[key]	.x = oldX;
 			play.mans[key]	.y = oldY;
 			map[ oldY ][ oldX ] = key;
@@ -178,11 +187,11 @@ AI.getAlphaBeta = function (A, B, depth, map ,my) {
 
 			return {"key":key,"x":newX,"y":newY,"value":8888};
 			//return rootKey; 
-	¡¡¡¡}else { 
-	¡¡¡¡	var val = -AI.getAlphaBeta(-B, -A, depth - 1, map , -my).value; 
+	ï¿½ï¿½ï¿½ï¿½}else { 
+	ï¿½ï¿½ï¿½ï¿½	var val = -AI.getAlphaBeta(-B, -A, depth - 1, map , -my).value; 
 			//val = val || val.value;
 	
-	¡¡¡¡	//³·ÏûÕâ¸ö×ß·¨;¡¡ 
+	ï¿½ï¿½ï¿½ï¿½	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½;ï¿½ï¿½ 
 			play.mans[key]	.x = oldX;
 			play.mans[key]	.y = oldY;
 			map[ oldY ][ oldX ] = key;
@@ -191,38 +200,38 @@ AI.getAlphaBeta = function (A, B, depth, map ,my) {
 				 map[ newY ][ newX ] = clearKey;
 				 //play.mans[ clearKey ].isShow = true;
 			}
-	¡¡¡¡	if (val >= B) { 
-				//½«Õâ¸ö×ß·¨¼ÇÂ¼µ½ÀúÊ·±íÖÐ; 
+	ï¿½ï¿½ï¿½ï¿½	if (val >= B) { 
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ê·ï¿½ï¿½ï¿½ï¿½; 
 				//AI.setHistoryTable(txtMap,AI.treeDepth-depth+1,B,my);
 				return {"key":key,"x":newX,"y":newY,"value":B}; 
 			} 
 			if (val > A) { 
-	¡¡¡¡¡¡¡¡	A = val; //ÉèÖÃ×î¼Ñ×ß·¨; 
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	A = val; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½; 
 				if (AI.treeDepth == depth) var rootKey={"key":key,"x":newX,"y":newY,"value":A};
 			} 
 		} 
-¡¡	} 
-	//½«Õâ¸ö×ß·¨¼ÇÂ¼µ½ÀúÊ·±íÖÐ; 
+ï¿½ï¿½	} 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ê·ï¿½ï¿½ï¿½ï¿½; 
 	//AI.setHistoryTable(txtMap,AI.treeDepth-depth+1,A,my);
-	if (AI.treeDepth == depth) {//ÒÑ¾­µÝ¹é»Ø¸ùÁË
+	if (AI.treeDepth == depth) {//ï¿½Ñ¾ï¿½ï¿½Ý¹ï¿½Ø¸ï¿½ï¿½ï¿½
 		if (!rootKey){
-			//AIÃ»ÓÐ×î¼Ñ×ß·¨£¬ËµÃ÷AI±»½«ËÀÁË£¬·µ»Øfalse
+			//AIÃ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½Ëµï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½false
 			return false;
 		}else{
-			//Õâ¸ö¾ÍÊÇ×î¼Ñ×ß·¨;
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½;
 			return rootKey;
 		}
 	}
-¡¡return {"key":key,"x":newX,"y":newY,"value":A}; 
+ï¿½ï¿½return {"key":key,"x":newX,"y":newY,"value":A}; 
 }
 
-//½±×Å·¨¼ÇÂ¼µ½ÀúÊ·±í
+//ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ê·ï¿½ï¿½
 AI.setHistoryTable = function (txtMap,depth,value,my){
 	AI.setHistoryTable.lenght ++;
 	AI.historyTable[txtMap] = {depth:depth,value:value} 
 }
 
-//ÆÀ¹ÀÆå¾Ö È¡µÃÆåÅÌË«·½Æå×Ó¼ÛÖµ²î
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½Öµï¿½ï¿½
 AI.evaluate = function (map,my){
 	var val=0;
 	for (var i=0; i<map.length; i++){
@@ -233,14 +242,14 @@ AI.evaluate = function (map,my){
 			}
 		}
 	}
-	//val+=Math.floor( Math.random() * 10);  //ÈÃAI×ßÆåÔö¼ÓËæ»úÔªËØ
+	//val+=Math.floor( Math.random() * 10);  //ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
 	//com.show()
 	//z(val*my)
 	AI.number++;
 	return val*my;
 }
 
-//ÆÀ¹ÀÆå¾Ö È¡µÃÆåÅÌË«·½Æå×Ó¼ÛÖµ²î
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½Öµï¿½ï¿½
 AI.evaluate1 = function (map,my){
 	var val=0;
 	for (var i in play.mans){
@@ -249,7 +258,7 @@ AI.evaluate1 = function (map,my){
 			val += man.value[man.y][man.x] * man.my;
 		}
 	}
-	//val+=Math.floor( Math.random() * 10);  //ÈÃAI×ßÆåÔö¼ÓËæ»úÔªËØ
+	//val+=Math.floor( Math.random() * 10);  //ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
 	//com.show()
 	//z(val*my)
 	AI.number++;

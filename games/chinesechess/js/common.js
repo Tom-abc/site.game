@@ -107,15 +107,7 @@ function  abc(){
 		},2000);
 	})*/
 	
-	com.getData("js/gambit.all.js",
-		function(data){
-		com.gambit=data.split(" ");
-		AI.historyBill = com.gambit;
-	})
-	com.getData("js/store.js",
-		function(data){
-		com.store=data.split(" ");
-	})
+	
 }
 
 //����ͼƬ
