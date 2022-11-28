@@ -1,6 +1,13 @@
 
 var com = com||{};
 
+
+var play = play||{};
+
+
+
+var AI = AI||{};
+
 com.init = function (stype){
 	
 	com.nowStype= stype || com.getCookie("stype") ||"stype1";
@@ -802,7 +809,6 @@ com.class.Dot = function (img, x, y){
 com.init();
 
 
-var play = play||{};
 
 play.init = function (){
 	
@@ -1119,8 +1125,6 @@ play.showWin = function (my){
 	}
 }
 
-
-var AI = AI||{};
 
 AI.historyTable	=	{};		//��ʷ��
 
